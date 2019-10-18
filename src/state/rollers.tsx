@@ -25,6 +25,8 @@ export interface RollersAction {
   roller?: Roller
 }
 
+export type RollersStateAndDispatch = [ RollersState, Dispatch<RollersAction> ]
+
 const initialState: RollersState = {
   rollers: []
 }
@@ -32,7 +34,7 @@ const initialState: RollersState = {
 export const RollersContext = createContext([
   initialState,
   ((a: RollersAction) => a) as Dispatch<RollersAction>
-])
+] as RollersStateAndDispatch)
 
 const reducer = (state: RollersState, action: RollersAction) => {
   switch (action.type) {
@@ -52,7 +54,7 @@ const reducer = (state: RollersState, action: RollersAction) => {
 }
 
 export const RollersProvider = ({ children }: { children: ReactNode }) => {
-  const [ state, dispatch ] = useReducer(reducer, initialState)
+  const [ state, dispatch ]: RollersStateAndDispatch = useReducer(reducer, initialState)
 
   return <RollersContext.Provider value={[ state, dispatch ]}>
     { children }

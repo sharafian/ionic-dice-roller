@@ -17,6 +17,7 @@ import {
 import { RouteComponentProps } from 'react-router-dom'
 import { add } from 'ionicons/icons'
 import React from 'react'
+import RollerList from '../components/RollerList'
 
 const Home: React.FC<RouteComponentProps> = (props) => {
   return <IonPage>
@@ -27,18 +28,7 @@ const Home: React.FC<RouteComponentProps> = (props) => {
     </IonHeader>
 
     <IonContent className='ion-padding'>
-      <IonList>
-        <IonItem>
-          <IonCheckbox slot='start' />
-          <IonLabel>
-            <h1>Create a roll</h1>
-            <IonNote>This is an action or something</IonNote>
-          </IonLabel>
-          <IonBadge color='success' slot='end'>
-            5 days
-          </IonBadge>
-        </IonItem>
-      </IonList>
+      <RollerList />
 
       <IonFab vertical='bottom' horizontal='end' slot='fixed'>
         <IonFabButton onClick={() => props.history.push('/new')}>
