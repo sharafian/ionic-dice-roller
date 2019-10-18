@@ -17,7 +17,7 @@ const Home: React.FC<RouteComponentProps> = (props) => {
   return <IonPage>
     <IonHeader>
       <IonToolbar>
-        <IonTitle>Ionic Blank</IonTitle>
+        <IonTitle>Dice Roller</IonTitle>
       </IonToolbar>
     </IonHeader>
 

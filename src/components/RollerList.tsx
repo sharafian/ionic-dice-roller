@@ -12,8 +12,8 @@ import React, { useContext } from 'react'
 const RollerList: React.FC = () => {
   const [ { rollers } ] = useContext(RollersContext)
 
-  const items = rollers.map((roller: Roller) => {
-    return <RollerItem key={roller.name} roller={roller} />
+  const items = rollers.map((roller: Roller, i: number) => {
+    return <RollerItem key={i} roller={roller} />
   })
 
   return <IonList>

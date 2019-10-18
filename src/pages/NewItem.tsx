@@ -9,7 +9,8 @@ import {
   IonToolbar,
   IonItem,
   IonLabel,
-  IonInput
+  IonInput,
+  NavContext
 } from '@ionic/react'
 import { RouteComponentProps } from 'react-router-dom'
 import React, { useState, useContext } from 'react'
@@ -20,13 +21,16 @@ import {
 
 const NewItem: React.FC<RouteComponentProps> = props => {
   const [, dispatch ] = useContext(RollersContext)
+  const navContext = useContext(NavContext)
 
   const [ count, setCount ] = useState('1')
   const [ sides, setSides ] = useState('20')
   const [ bonus, setBonus ] = useState('0')
   const [ name, setName ] = useState('')
 
-  const createRoller = () => {
+  const createRoller = (e: React.MouseEvent) => {
+    e.preventDefault()
+
     dispatch({
       type: RollersActionType.ADD_ROLLER,
       roller: {
@@ -37,7 +41,7 @@ const NewItem: React.FC<RouteComponentProps> = props => {
       }
     })
 
-    props.history.goBack()    
+    navContext.goBack()
   }
 
   return <IonPage>
