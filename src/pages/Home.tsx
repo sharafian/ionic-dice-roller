@@ -1,26 +1,52 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import React from 'react';
+import {
+  IonFab,
+  IonFabButton,
+  IonIcon,
+  IonBadge,
+  IonNote,
+  IonLabel,
+  IonCheckbox,
+  IonContent,
+  IonList,
+  IonItem,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar
+} from '@ionic/react'
+import { RouteComponentProps } from 'react-router-dom'
+import { add } from 'ionicons/icons'
+import React from 'react'
 
-const Home: React.FC = () => {
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Ionic Blank</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="ion-padding">
-        The world is your oyster.
-        <p>
-          If you get lost, the{' '}
-          <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/">
-            docs
-          </a>{' '}
-          will be your guide.
-        </p>
-      </IonContent>
-    </IonPage>
-  );
-};
+const Home: React.FC<RouteComponentProps> = (props) => {
+  return <IonPage>
+    <IonHeader>
+      <IonToolbar>
+        <IonTitle>Ionic Blank</IonTitle>
+      </IonToolbar>
+    </IonHeader>
 
-export default Home;
+    <IonContent className='ion-padding'>
+      <IonList>
+        <IonItem>
+          <IonCheckbox slot='start' />
+          <IonLabel>
+            <h1>Create a roll</h1>
+            <IonNote>This is an action or something</IonNote>
+          </IonLabel>
+          <IonBadge color='success' slot='end'>
+            5 days
+          </IonBadge>
+        </IonItem>
+      </IonList>
+
+      <IonFab vertical='bottom' horizontal='end' slot='fixed'>
+        <IonFabButton onClick={() => props.history.push('/new')}>
+          <IonIcon icon={add} />
+        </IonFabButton>
+      </IonFab>
+    </IonContent>
+  </IonPage>
+}
+
+export default Home
